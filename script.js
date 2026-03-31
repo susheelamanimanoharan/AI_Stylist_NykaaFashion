@@ -168,6 +168,12 @@ function showToast(msg) {
 // UI Initialization
 document.addEventListener('DOMContentLoaded', () => {
     const views = {
+        splash: document.getElementById('splash-view'),
+        login: document.getElementById('login-view'),
+        modeSelection: document.getElementById('mode-selection-view'),
+        avatarSetup: document.getElementById('avatar-setup-view'),
+        preferenceSetup: document.getElementById('preference-setup-view'),
+        zoneSelection: document.getElementById('zone-selection-view'),
         home: document.getElementById('home-view'),
         loading: document.getElementById('loading-view'),
         results: document.getElementById('results-view'),
@@ -176,16 +182,76 @@ document.addEventListener('DOMContentLoaded', () => {
         checkout: document.getElementById('checkout-view')
     };
 
+    const globalHeader = document.getElementById('global-header');
+
     function goToView(targetId) {
         Object.values(views).forEach(view => {
-            view.classList.remove('active');
-            view.classList.add('hidden');
+            if(view) {
+                view.classList.remove('active');
+                view.classList.add('hidden');
+            }
         });
         const target = document.getElementById(targetId);
-        target.classList.remove('hidden');
-        target.classList.add('active');
+        if(target) {
+            target.classList.remove('hidden');
+            setTimeout(() => target.classList.add('active'), 10);
+        }
         window.scrollTo(0, 0); // Reset scroll position for mobile viewing
+
+        if(globalHeader) {
+            if(targetId === 'splash-view' || targetId === 'login-view') {
+                globalHeader.classList.add('hidden');
+                globalHeader.style.opacity = '0';
+            } else {
+                globalHeader.classList.remove('hidden');
+                setTimeout(() => globalHeader.style.opacity = '1', 10);
+            }
+        }
     }
+
+    // New Flow Logic
+    setTimeout(() => {
+        if(document.getElementById('splash-view').classList.contains('active')) {
+            goToView('login-view');
+        }
+    }, 2500);
+
+    const phoneInput = document.getElementById('login-phone');
+    const otpBtn = document.getElementById('get-otp-btn');
+    if(phoneInput && otpBtn) {
+        otpBtn.style.opacity = '0.5';
+        otpBtn.disabled = true;
+        phoneInput.addEventListener('input', (e) => {
+            e.target.value = e.target.value.replace(/\D/g, '').substring(0, 10);
+            if(e.target.value.length === 10) {
+                otpBtn.style.opacity = '1';
+                otpBtn.disabled = false;
+            } else {
+                otpBtn.style.opacity = '0.5';
+                otpBtn.disabled = true;
+            }
+        });
+        otpBtn.addEventListener('click', () => {
+            goToView('mode-selection-view');
+        });
+    }
+
+    const btnAiStylist = document.getElementById('btn-ai-stylist');
+    const btnBrowse = document.getElementById('btn-browse');
+    if(btnAiStylist) btnAiStylist.addEventListener('click', () => goToView('avatar-setup-view'));
+    if(btnBrowse) btnBrowse.addEventListener('click', () => alert('Browse Marketplace coming soon!'));
+
+    const avatarNextBtn = document.getElementById('avatar-next-btn');
+    if(avatarNextBtn) avatarNextBtn.addEventListener('click', () => goToView('preference-setup-view'));
+
+    const prefNextBtn = document.getElementById('pref-next-btn');
+    if(prefNextBtn) prefNextBtn.addEventListener('click', () => goToView('zone-selection-view'));
+
+    const btnZone1 = document.getElementById('btn-zone1');
+    const btnZone2 = document.getElementById('btn-zone2');
+    if(btnZone1) btnZone1.addEventListener('click', () => goToView('home-view'));
+    if(btnZone2) btnZone2.addEventListener('click', () => goToView('home-view'));
+
 
     document.querySelectorAll('.back-btn').forEach(btn => {
         btn.addEventListener('click', () => {

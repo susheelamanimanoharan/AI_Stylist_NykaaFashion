@@ -3,26 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Style Terminal by Nykaa</title>
+    <title>Nykaa Style Terminal</title>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="app-container">
-        <!-- Header -->
-        <header class="header">
+        <!-- Global Header (Hidden on Splash/Login) -->
+        <header class="header hidden" id="global-header" style="transition: opacity 0.3s; opacity: 0;">
             <div class="logo">
+                <span class="logo-brand" style="margin-top: 0; margin-bottom: 2px;">NYKAA</span>
                 <span class="logo-text">STYLE</span>
                 <span class="logo-sub">TERMINAL</span>
-                <span class="logo-brand">by Nykaa</span>
             </div>
             <button class="menu-btn" aria-label="Menu">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </button>
         </header>
 
-        <!-- 1. Home Screen -->
-        <main id="home-view" class="view active">
+        <!-- New Screen 1: Splash Screen -->
+        <main id="splash-view" class="view active" style="background: linear-gradient(135deg, #000000, #1a0810); align-items: center; justify-content: center; top: 0; height: 100vh;">
+            <div style="color: #fff; font-size: 36px; font-weight: 700; letter-spacing: 4px; display: flex; align-items: center; gap: 8px;">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="var(--nykaa-pink)"><path d="M12 2L2 22h20L12 2z"/></svg>
+                NYKAA
+            </div>
+            <div style="color: #ffebf1; font-size: 14px; margin-top: 12px; letter-spacing: 1px;">Your Personal AI Stylist</div>
+        </main>
+
+        <!-- New Screen 2: Login -->
+        <main id="login-view" class="view hidden" style="top: 0; height: 100vh; padding: 40px 24px; background: #fff;">
+            <div style="margin-top: 80px;">
+                <h1 style="font-size: 28px; font-weight: 700; margin-bottom: 8px;">Login / Sign Up</h1>
+                <p style="color: #666; font-size: 14px; margin-bottom: 32px;">Continue to your personalized fashion experience</p>
+                <div style="display: flex; gap: 12px; margin-bottom: 24px;">
+                    <div style="padding: 16px; border: 1px solid #ddd; border-radius: 12px; background: #fafafa; font-weight: 600;">+91</div>
+                    <input type="tel" id="login-phone" placeholder="Mobile Number" style="flex: 1; padding: 16px; border: 1px solid #ddd; border-radius: 12px; outline: none; font-family: inherit; font-size: 16px;">
+                </div>
+                <button id="get-otp-btn" class="primary-btn w-full" style="background: var(--nykaa-pink); border-radius: 12px;">Get OTP</button>
+            </div>
+        </main>
+
+        <!-- New Screen 3: Mode Selection -->
+        <main id="mode-selection-view" class="view hidden" style="padding: 24px; background: #fff;">
+            <h1 style="font-size: 28px; font-weight: 700; margin-bottom: 32px; line-height: 1.2;">How would you like to shop today?</h1>
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+                <div id="btn-ai-stylist" style="border: 2px solid var(--nykaa-pink); border-radius: 16px; padding: 24px; position: relative; cursor: pointer; background: #fff; box-shadow: 0 8px 24px rgba(252,39,121,0.1);">
+                    <div style="position: absolute; top: -12px; right: 24px; background: var(--nykaa-pink); color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 700;">RECOMMENDED</div>
+                    <div style="font-size: 32px; margin-bottom: 12px;">✨</div>
+                    <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 8px;">AI Stylist</h3>
+                    <p style="font-size: 13px; color: #666;">Get guided outfit suggestions</p>
+                </div>
+                <div id="btn-browse" style="border: 1px solid #eee; border-radius: 16px; padding: 24px; cursor: pointer; background: #fafafa; transition: border 0.3s; opacity: 0.6;">
+                    <div style="font-size: 32px; margin-bottom: 12px;">🛍️</div>
+                    <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 8px;">Browse Marketplace</h3>
+                    <p style="font-size: 13px; color: #666;">Explore products manually</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- New Screen 4: Avatar Setup -->
+        <main id="avatar-setup-view" class="view hidden">
+            <header class="view-header">
+                <button class="back-btn" data-target="mode-selection-view">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                </button>
+                <h2>Avatar Setup</h2>
+                <div style="width: 20px;"></div>
+            </header>
+            <div class="scrollable-content" style="padding: 24px;">
+                <h1 style="font-size: 24px; font-weight: 700; margin-bottom: 24px;">Who are you shopping for?</h1>
+                <div style="display: flex; gap: 12px; margin-bottom: 32px; background: #f0f0f0; padding: 4px; border-radius: 12px;">
+                    <button style="flex: 1; padding: 12px; background: #fff; border: none; border-radius: 8px; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">Myself</button>
+                    <button style="flex: 1; padding: 12px; background: transparent; border: none; border-radius: 8px; color: #666; font-weight: 500;">Someone else</button>
+                </div>
+                <!-- Body Type -->
+                <div style="margin-bottom: 24px;">
+                    <label style="display: block; font-size: 13px; font-weight: 600; color: #666; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Body Type</label>
+                    <div style="display: flex; gap: 12px;">
+                        <div style="flex: 1; text-align: center; border: 2px solid var(--nykaa-dark); border-radius: 12px; padding: 16px 8px; cursor: pointer;">
+                            <div style="height: 60px; background: #f0f0f0; border-radius: 8px; margin-bottom: 8px;"></div>
+                            <span style="font-size: 12px; font-weight: 600;">Petite</span>
+                        </div>
+                        <div style="flex: 1; text-align: center; border: 1px solid #eee; border-radius: 12px; padding: 16px 8px; cursor: pointer; opacity: 0.7;">
+                            <div style="height: 60px; background: #f0f0f0; border-radius: 8px; margin-bottom: 8px;"></div>
+                            <span style="font-size: 12px; font-weight: 500;">Athletic</span>
+                        </div>
+                        <div style="flex: 1; text-align: center; border: 1px solid #eee; border-radius: 12px; padding: 16px 8px; cursor: pointer; opacity: 0.7;">
+                            <div style="height: 60px; background: #f0f0f0; border-radius: 8px; margin-bottom: 8px;"></div>
+                            <span style="font-size: 12px; font-weight: 500;">Curvy</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Skin Tone -->
+                <div style="margin-bottom: 24px;">
+                    <label style="display: block; font-size: 13px; font-weight: 600; color: #666; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Skin Tone</label>
+                    <div style="display: flex; gap: 12px;">
+                        <button style="width: 40px; height: 40px; border-radius: 50%; border: none; background: #fce0ce; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"></button>
+                        <button style="width: 40px; height: 40px; border-radius: 50%; border: 3px solid #fff; outline: 2px solid var(--nykaa-dark); background: #e8bfaa; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"></button>
+                        <button style="width: 40px; height: 40px; border-radius: 50%; border: none; background: #c18a6e; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"></button>
+                        <button style="width: 40px; height: 40px; border-radius: 50%; border: none; background: #8a563b; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"></button>
+                    </div>
+                </div>
+                <!-- Gender -->
+                <div style="margin-bottom: 24px;">
+                    <label style="display: block; font-size: 13px; font-weight: 600; color: #666; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Gender</label>
+                    <div style="display: flex; gap: 10px;">
+                        <button class="chip" style="background: var(--nykaa-dark); color: #fff; border-color: var(--nykaa-dark);">Women</button>
+                        <button class="chip">Men</button>
+                        <button class="chip">Fluid</button>
+                    </div>
+                </div>
+                <div style="border: 1px dashed #ccc; border-radius: 12px; padding: 20px; text-align: center; background: #fafafa;">
+                    <div style="font-size: 24px; margin-bottom: 8px;">📷</div>
+                    <div style="font-size: 13px; font-weight: 600; color: #444;">Upload Image (Optional)</div>
+                </div>
+            </div>
+            <div class="action-footer fixed">
+                <button id="avatar-next-btn" class="primary-btn w-full">Continue Setup</button>
+            </div>
+        </main>
+
+        <!-- New Screen 5: Style Preference Setup -->
+        <main id="preference-setup-view" class="view hidden">
+            <header class="view-header">
+                <button class="back-btn" data-target="avatar-setup-view">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                </button>
+                <h2>Style Preferences</h2>
+                <div style="width: 20px;"></div>
+            </header>
+            <div class="scrollable-content" style="padding: 24px;">
+                <h1 style="font-size: 24px; font-weight: 700; margin-bottom: 24px;">Tell us your style</h1>
+                <!-- Vibe -->
+                <div style="margin-bottom: 32px;">
+                    <label style="display: block; font-size: 13px; font-weight: 600; color: #666; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Vibe (Multi-select)</label>
+                    <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        <button class="chip" style="background: var(--nykaa-dark); color: #fff; border-color: var(--nykaa-dark);">Casual</button>
+                        <button class="chip">Formal</button>
+                        <button class="chip" style="background: var(--nykaa-dark); color: #fff; border-color: var(--nykaa-dark);">Streetwear</button>
+                        <button class="chip">Ethnic</button>
+                    </div>
+                </div>
+                <!-- Color -->
+                <div style="margin-bottom: 32px;">
+                    <label style="display: block; font-size: 13px; font-weight: 600; color: #666; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Color Preferences</label>
+                    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                        <button style="width: 36px; height: 36px; border-radius: 8px; border: 2px solid var(--nykaa-dark); background: #111; position: relative;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </button>
+                        <button style="width: 36px; height: 36px; border-radius: 8px; border: 1px solid #ddd; background: #fff; position: relative;"></button>
+                        <button style="width: 36px; height: 36px; border-radius: 8px; border: none; background: #fc2779; position: relative;"></button>
+                    </div>
+                </div>
+                <!-- Budget -->
+                <div style="margin-bottom: 24px;">
+                    <label style="display: block; font-size: 13px; font-weight: 600; color: #666; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Budget Range</label>
+                    <div style="display: flex; gap: 8px; justify-content: space-between;">
+                        <button style="flex: 1; padding: 12px; background: #fafafa; border: 1px solid #ddd; border-radius: 8px; font-weight: 600;">₹</button>
+                        <button style="flex: 1; padding: 12px; background: var(--nykaa-pink-light); border: 1px solid var(--nykaa-pink); border-radius: 8px; font-weight: 600; color: var(--nykaa-pink);">₹₹</button>
+                        <button style="flex: 1; padding: 12px; background: #fafafa; border: 1px solid #ddd; border-radius: 8px; font-weight: 600;">₹₹₹</button>
+                    </div>
+                </div>
+            </div>
+            <div class="action-footer fixed">
+                <button id="pref-next-btn" class="primary-btn w-full">Save Preferences</button>
+            </div>
+        </main>
+
+        <!-- New Screen 6: Zone Selection -->
+        <main id="zone-selection-view" class="view hidden" style="padding: 24px; background: #fff;">
+            <header class="view-header" style="padding: 0 0 16px 0; border: none; margin-bottom: 16px; position: static;">
+                <button class="back-btn" data-target="preference-setup-view" style="padding: 0;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                </button>
+            </header>
+            <h1 style="font-size: 28px; font-weight: 700; margin-bottom: 32px; line-height: 1.2;">What do you need today?</h1>
+            <div style="display: flex; flex-direction: column; gap: 16px;">
+                <div id="btn-zone1" style="border: 2px solid var(--nykaa-dark); border-radius: 16px; padding: 24px; cursor: pointer; background: #fff; box-shadow: 0 8px 20px rgba(0,0,0,0.05);">
+                    <div style="font-size: 32px; margin-bottom: 12px;">👗</div>
+                    <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 8px;">Create Complete Look</h3>
+                    <p style="font-size: 13px; color: #666;">Get a full outfit styled for your occasion</p>
+                </div>
+                <div id="btn-zone2" style="border: 1px solid #ccc; border-radius: 16px; padding: 24px; cursor: pointer; background: #fafafa;">
+                    <div style="font-size: 32px; margin-bottom: 12px;">🧥</div>
+                    <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 8px;">Complete My Outfit</h3>
+                    <p style="font-size: 13px; color: #666;">Find items to match what you already own</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- 7. Home Screen / Zone 1 Target -->
+        <main id="home-view" class="view hidden">
+            <header class="view-header">
+                <button class="back-btn" data-target="zone-selection-view">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                </button>
+                <h2>Create Complete Look</h2>
+                <div style="width: 20px;"></div>
+            </header>
             <div class="hero">
                 <h1>What are you dressing for today?</h1>
                 <form id="nl-form" class="nl-input-container">
