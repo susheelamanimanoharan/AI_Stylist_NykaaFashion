@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Style Terminal by Nykaa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-text">STYLE</span>
+                <span class="logo-sub">TERMINAL</span>
+                <span class="logo-brand">by Nykaa</span>
+            </div>
+            <button class="menu-btn" aria-label="Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            </button>
+        </header>
+
+        <!-- 1. Home Screen -->
+        <main id="home-view" class="view active">
+            <div class="hero">
+                <h1>What are you dressing for today?</h1>
+                <form id="nl-form" class="nl-input-container">
+                    <input type="text" id="nl-input" class="nl-input" placeholder="Type your occasion..." autocomplete="off" required>
+                    <button type="submit" class="nl-submit-btn" aria-label="Curate Outfit">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                    </button>
+                </form>
+            </div>
+            <div class="suggestions-container">
+                <p class="suggestions-title">TRY THESE:</p>
+                <div class="suggestions-chips">
+                    <button class="chip" data-query="Brunch in Goa">Brunch in Goa</button>
+                    <button class="chip" data-query="Client meeting look">Client meeting look</button>
+                    <button class="chip" data-query="Date night outfit">Date night outfit</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Loading Screen -->
+        <main id="loading-view" class="view hidden">
+            <div class="loader-container">
+                <div class="spinner-ring"></div>
+                <h2>Curating your looks...</h2>
+                <p>Matching pieces based on your style profile & occasion</p>
+                <div class="progress-bar-container">
+                    <div class="progress-bar"></div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 2. Results Screen -->
+        <main id="results-view" class="view hidden">
+            <header class="view-header">
+                <button class="back-btn" data-target="home-view">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                </button>
+                <h2>Top 3 Curated Looks</h2>
+                <div style="width: 20px;"></div> <!-- spacer -->
+            </header>
+            <div style="padding: 16px 20px 0;">
+                <p style="font-size: 14px; color: #666; text-align: center; font-weight: 400;">Selected based on your occasion and preferences</p>
+            </div>
+            <div class="outfit-cards-container" id="results-container">
+                <!-- JS populated -->
+            </div>
+        </main>
+
+        <!-- 3. Detail Screen -->
+        <main id="detail-view" class="view hidden">
+            <header class="view-header">
+                <button class="back-btn" data-target="results-view">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                </button>
+                <h2>Outfit Breakdown</h2>
+                <div style="width: 20px;"></div>
+            </header>
+            <div class="scrollable-content">
+                <div class="image-wrapper">
+                    <img id="detail-image" src="" alt="Outfit" style="margin-bottom: 8px;" />
+                    <div class="bundle-banner">
+                        ✨ Complete the look & save 10%
+                    </div>
+                    <div style="display: flex; flex-direction: column; gap: 8px;">
+                        <button id="try-on-btn" class="secondary-btn w-full">Try On Model</button>
+                        <div style="display: flex; gap: 8px; align-items: stretch;">
+                            <button id="buy-look-btn" class="primary-btn flex-col" style="flex:1; border-radius:12px; font-size:13px; justify-content:center;">
+                                <span style="font-weight:700;">Buy Full Look</span>
+                                <div style="display:flex; align-items:center; justify-content:center;">
+                                    <span class="original-price" id="detail-original-price">₹0</span>
+                                    <span class="sub-amt" id="detail-total-price">₹0</span>
+                                </div>
+                            </button>
+                            <button id="looks-good-btn-detail" class="primary-btn" style="flex:1; border-radius:12px; font-size:13px; background:#111;">Looks Good, Continue</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="outfit-details">
+                    <div class="pieces-title">Items in this Look</div>
+                    <div class="pieces-list" id="detail-pieces">
+                        <!-- JS populated -->
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 4. Try-On Screen -->
+        <main id="tryon-view" class="view hidden">
+            <header class="view-header">
+                <button class="back-btn" data-target="detail-view">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                </button>
+                <h2>Virtual Try-On</h2>
+                <div style="width: 20px;"></div>
+            </header>
+            <div class="tryon-content">
+                <div class="toggle-container">
+                    <span id="label-real" class="toggle-label active">Realistic View</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="tryon-toggle">
+                        <span class="slider"></span>
+                    </label>
+                    <span id="label-ai" class="toggle-label">AI Styled View</span>
+                </div>
+                <div class="tryon-model-container">
+                    <img id="tryon-img" src="" alt="Try On">
+                    <div id="ai-scan-overlay" class="scan-overlay hidden">
+                        <div class="scan-line"></div>
+                        <p>Styling your Avatar...</p>
+                    </div>
+                    <div class="glass-overlay badge-corner">
+                        <span class="badge" id="tryon-badge">Realistic View</span>
+                    </div>
+                </div>
+                <!-- Trust Building Note -->
+                <div style="padding: 16px 20px; text-align: center;">
+                    <p style="font-size: 13px; color: #666; font-style: italic; background: rgba(0,0,0,0.03); padding: 10px; border-radius: 8px;">
+                        <svg style="vertical-align: middle; margin-right: 4px;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                        This is an AI-assisted visualization for styling reference
+                    </p>
+                </div>
+            </div>
+            <div class="action-footer fixed">
+                <button id="looks-good-btn" class="primary-btn w-full">Looks Good, Continue</button>
+            </div>
+        </main>
+
+        <!-- 5. Checkout Screen -->
+        <main id="checkout-view" class="view hidden">
+            <header class="view-header">
+                <button class="back-btn" data-target="detail-view">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                </button>
+                <h2>Checkout</h2>
+                <div style="width: 20px;"></div>
+            </header>
+            <div class="scrollable-content pb-100">
+                <div class="checkout-container">
+                    <h3>Order Summary</h3>
+                    <div class="bundled-items" id="checkout-items">
+                        <!-- JS populated -->
+                    </div>
+                    <div class="separator"></div>
+                    <div class="checkout-row strong">
+                        <span>Total Payable</span>
+                        <span id="checkout-total" class="nykaa-pink">₹0</span>
+                    </div>
+                </div>
+                
+                <div class="checkout-container mt-16">
+                    <h3>Delivery Detail</h3>
+                    <p class="text-sm text-gray">Nykaa Express Delivery<br>Arrives in 1-2 days.</p>
+                </div>
+            </div>
+            <div class="action-footer fixed">
+                <button class="primary-btn w-full" id="finalize-buy-btn">Complete Purchase</button>
+            </div>
+        </main>
+        <!-- Swap Item Modal -->
+        <div id="swap-modal" class="modal-overlay hidden">
+            <div class="modal-content">
+                <header class="modal-header">
+                    <h3>Swap <span id="swap-item-type">Top</span></h3>
+                    <button id="close-swap-btn" class="close-btn">&times;</button>
+                </header>
+                <div class="swap-options-list" id="swap-options">
+                    <!-- JS populated -->
+                </div>
+            </div>
+        </div>
+
+        <!-- AI Learning Toast -->
+        <div id="toast" class="toast hidden">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            <span>We're learning your style preferences</span>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
