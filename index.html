@@ -22,12 +22,15 @@
         </header>
 
         <!-- New Screen 1: Splash Screen -->
-        <main id="splash-view" class="view active" style="background: linear-gradient(135deg, #000000, #1a0810); align-items: center; justify-content: center; top: 0; height: 100vh;">
-            <div style="color: #fff; font-size: 36px; font-weight: 700; letter-spacing: 4px; display: flex; align-items: center; gap: 8px;">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="var(--nykaa-pink)"><path d="M12 2L2 22h20L12 2z"/></svg>
-                NYKAA
+        <main id="splash-view" class="view active splash-bg" style="top: 0; height: 100vh;">
+            <div class="splash-center-content">
+                <div class="glossy-n-logo">N</div>
             </div>
-            <div style="color: #ffebf1; font-size: 14px; margin-top: 12px; letter-spacing: 1px;">Your Personal AI Stylist</div>
+            
+            <div class="splash-bottom-content">
+                <div class="splash-brand-text">NYKAA FASHION</div>
+                <div class="splash-tagline">Style smarter with AI ✨</div>
+            </div>
         </main>
 
         <!-- New Screen 2: Login -->
@@ -44,20 +47,35 @@
         </main>
 
         <!-- New Screen 3: Mode Selection -->
-        <main id="mode-selection-view" class="view hidden" style="padding: 24px; background: #fff;">
-            <h1 style="font-size: 28px; font-weight: 700; margin-bottom: 32px; line-height: 1.2;">How would you like to shop today?</h1>
-            <div style="display: flex; flex-direction: column; gap: 16px;">
-                <div id="btn-ai-stylist" style="border: 2px solid var(--nykaa-pink); border-radius: 16px; padding: 24px; position: relative; cursor: pointer; background: #fff; box-shadow: 0 8px 24px rgba(252,39,121,0.1);">
-                    <div style="position: absolute; top: -12px; right: 24px; background: var(--nykaa-pink); color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 700;">RECOMMENDED</div>
-                    <div style="font-size: 32px; margin-bottom: 12px;">✨</div>
-                    <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 8px;">AI Stylist</h3>
-                    <p style="font-size: 13px; color: #666;">Get guided outfit suggestions</p>
+        <main id="mode-selection-view" class="view hidden mode-bg" style="padding: 32px 24px; display: flex; flex-direction: column; overflow-y: auto;">
+            <div style="flex: 1; margin-top: 40px;">
+                <h1 class="anim-delay-1" style="font-size: 28px; font-weight: 700; margin-bottom: 8px; line-height: 1.2; opacity: 0; color: #111;">How do you want to shop today?</h1>
+                <p class="anim-delay-1" style="color: #666; font-size: 14px; margin-bottom: 40px; opacity: 0;">Select your preferred shopping experience</p>
+                
+                <div style="display: flex; flex-direction: column; gap: 24px;">
+                    <!-- Card 2: AI Stylist (Pre-selected) -->
+                    <div class="mode-card-v2 active anim-delay-2" id="card-ai">
+                        <div class="mode-badge-v2">✨ Recommended</div>
+                        <div class="mode-icon-v2">✨</div>
+                        <div class="mode-info-v2">
+                            <h3 class="mode-title-v2">Style Me</h3>
+                            <p class="mode-desc-v2">Get outfits picked just for you</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Card 1: Browse Marketplace -->
+                    <div class="mode-card-v2 anim-delay-3" id="card-browse">
+                        <div class="mode-icon-v2">🛍️</div>
+                        <div class="mode-info-v2">
+                            <h3 class="mode-title-v2">Shop Your Way</h3>
+                            <p class="mode-desc-v2">Explore styles and pick what you like</p>
+                        </div>
+                    </div>
                 </div>
-                <div id="btn-browse" style="border: 1px solid #eee; border-radius: 16px; padding: 24px; cursor: pointer; background: #fafafa; transition: border 0.3s; opacity: 0.6;">
-                    <div style="font-size: 32px; margin-bottom: 12px;">🛍️</div>
-                    <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 8px;">Browse Marketplace</h3>
-                    <p style="font-size: 13px; color: #666;">Explore products manually</p>
-                </div>
+            </div>
+            
+            <div class="anim-delay-3" style="width: 100%; opacity: 0; padding-bottom: 24px; margin-top: 40px;">
+                <button id="mode-continue-btn" class="primary-btn w-full" style="background: var(--nykaa-pink); border-radius: 16px; height: 56px; font-size: 16px; box-shadow: 0 8px 24px rgba(252,39,121,0.25);">Continue</button>
             </div>
         </main>
 

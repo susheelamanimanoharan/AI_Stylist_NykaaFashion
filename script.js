@@ -236,10 +236,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    const btnAiStylist = document.getElementById('btn-ai-stylist');
-    const btnBrowse = document.getElementById('btn-browse');
-    if(btnAiStylist) btnAiStylist.addEventListener('click', () => goToView('avatar-setup-view'));
-    if(btnBrowse) btnBrowse.addEventListener('click', () => alert('Browse Marketplace coming soon!'));
+    const cardAi = document.getElementById('card-ai');
+    const cardBrowse = document.getElementById('card-browse');
+    const modeContinueBtn = document.getElementById('mode-continue-btn');
+    let selectedMode = 'ai'; // 'ai' or 'browse'
+
+    if(cardAi && cardBrowse && modeContinueBtn) {
+        cardAi.addEventListener('click', () => {
+            selectedMode = 'ai';
+            cardAi.classList.add('active');
+            cardBrowse.classList.remove('active');
+        });
+        
+        cardBrowse.addEventListener('click', () => {
+            selectedMode = 'browse';
+            cardBrowse.classList.add('active');
+            cardAi.classList.remove('active');
+        });
+
+        modeContinueBtn.addEventListener('click', () => {
+            if(selectedMode === 'ai') {
+                goToView('avatar-setup-view');
+            } else {
+                alert('Browse Marketplace coming soon!');
+            }
+        });
+    }
 
     const avatarNextBtn = document.getElementById('avatar-next-btn');
     if(avatarNextBtn) avatarNextBtn.addEventListener('click', () => goToView('preference-setup-view'));
