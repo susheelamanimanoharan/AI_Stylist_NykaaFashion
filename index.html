@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -7,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="app-container">
         <!-- Global Header (Hidden on Splash/Login) -->
@@ -16,9 +18,20 @@
                 <span class="logo-text">STYLE</span>
                 <span class="logo-sub">TERMINAL</span>
             </div>
-            <button class="menu-btn" aria-label="Menu">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-            </button>
+            <div class="header-actions">
+                <button class="profile-btn" id="header-profile-btn" aria-label="Profile">
+                    <div class="profile-avatar-placeholder" id="user-avatar-small">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                    </div>
+                </button>
+                <button class="cart-btn" id="header-cart-btn" aria-label="Cart">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                    <span class="cart-badge hidden" id="cart-badge">0</span>
+                </button>
+                <button class="home-btn" id="header-home-btn" aria-label="Home">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                </button>
+            </div>
         </header>
 
         <!-- New Screen 1: Splash Screen -->
@@ -26,7 +39,7 @@
             <div class="splash-center-content">
                 <div class="glossy-n-logo">N</div>
             </div>
-            
+
             <div class="splash-bottom-content">
                 <div class="splash-brand-text">NYKAA FASHION</div>
                 <div class="splash-tagline">Style smarter with AI ✨</div>
@@ -37,45 +50,65 @@
         <main id="login-view" class="view hidden" style="top: 0; height: 100vh; padding: 40px 24px; background: #fff;">
             <div style="margin-top: 80px;">
                 <h1 style="font-size: 28px; font-weight: 700; margin-bottom: 8px;">Login / Sign Up</h1>
-                <p style="color: #666; font-size: 14px; margin-bottom: 32px;">Continue to your personalized fashion experience</p>
+                <p style="color: #666; font-size: 14px; margin-bottom: 32px;">Continue to your personalized fashion
+                    experience</p>
                 <div style="display: flex; gap: 12px; margin-bottom: 24px;">
-                    <div style="padding: 16px; border: 1px solid #ddd; border-radius: 12px; background: #fafafa; font-weight: 600;">+91</div>
-                    <input type="tel" id="login-phone" placeholder="Mobile Number" style="flex: 1; padding: 16px; border: 1px solid #ddd; border-radius: 12px; outline: none; font-family: inherit; font-size: 16px;">
+                    <div
+                        style="padding: 16px; border: 1px solid #ddd; border-radius: 12px; background: #fafafa; font-weight: 600;">
+                        +91</div>
+                    <input type="tel" id="login-phone" placeholder="Mobile Number"
+                        style="flex: 1; padding: 16px; border: 1px solid #ddd; border-radius: 12px; outline: none; font-family: inherit; font-size: 16px;">
                 </div>
-                <button id="get-otp-btn" class="primary-btn w-full" style="background: var(--nykaa-pink); border-radius: 12px;">Get OTP</button>
+                <button id="get-otp-btn" class="primary-btn w-full"
+                    style="background: var(--nykaa-pink); border-radius: 12px;">Get OTP</button>
             </div>
         </main>
 
         <!-- New Screen 3: Mode Selection -->
-        <main id="mode-selection-view" class="view hidden mode-bg" style="padding: 32px 24px; display: flex; flex-direction: column; overflow-y: auto;">
+        <main id="mode-selection-view" class="view hidden mode-bg"
+            style="padding: 32px 24px; display: flex; flex-direction: column; overflow-y: auto;">
             <div style="flex: 1; margin-top: 40px;">
-                <h1 class="anim-delay-1" style="font-size: 28px; font-weight: 700; margin-bottom: 8px; line-height: 1.2; opacity: 0; color: #111;">How do you want to shop today?</h1>
-                <p class="anim-delay-1" style="color: #666; font-size: 14px; margin-bottom: 40px; opacity: 0;">Select your preferred shopping experience</p>
-                
+                <h1 class="anim-delay-1"
+                    style="font-size: 28px; font-weight: 700; margin-bottom: 8px; line-height: 1.2; opacity: 0; color: #111;">
+                    How do you want to shop today?</h1>
+                <p class="anim-delay-1" style="color: #666; font-size: 14px; margin-bottom: 40px; opacity: 0;">Select
+                    your preferred shopping experience</p>
+
                 <div style="display: flex; flex-direction: column; gap: 24px;">
-                    <!-- Card 2: AI Stylist (Pre-selected) -->
-                    <div class="mode-card-v2 active anim-delay-2" id="card-ai">
-                        <div class="mode-badge-v2">✨ Recommended</div>
-                        <div class="mode-icon-v2">✨</div>
+                    <div class="mode-card-v2 active anim-delay-2 enhanced-ai-card" id="card-ai" style="margin-top: 10px;">
+
+                        <div class="mode-icon-v2">
+                            <img src="https://api.iconify.design/solar:magic-stick-3-bold-duotone.svg?color=%23fc2779" alt="AI magic" style="width: 32px; height: 32px;">
+                        </div>
                         <div class="mode-info-v2">
-                            <h3 class="mode-title-v2">Style Me</h3>
+                            <h3 class="mode-title-v2">Style Me ✨</h3>
                             <p class="mode-desc-v2">Get outfits picked just for you</p>
                         </div>
+                        <div class="mode-card-glow"></div>
                     </div>
-                    
+
                     <!-- Card 1: Browse Marketplace -->
-                    <div class="mode-card-v2 anim-delay-3" id="card-browse">
-                        <div class="mode-icon-v2">🛍️</div>
-                        <div class="mode-info-v2">
-                            <h3 class="mode-title-v2">Shop Your Way</h3>
-                            <p class="mode-desc-v2">Explore styles and pick what you like</p>
+                    <div class="mode-card-v2 anim-delay-3" id="card-browse" style="height: auto; flex-direction: column; align-items: stretch; gap: 16px;">
+                        <div style="display: flex; align-items: center; gap: 16px;">
+                            <div class="mode-icon-v2">🛍️</div>
+                            <div class="mode-info-v2">
+                                <h3 class="mode-title-v2">Shop Your Way</h3>
+                                <p class="mode-desc-v2">Explore styles and pick what you like</p>
+                            </div>
+                        </div>
+                        
+                        <div class="category-selection-chips" style="display: flex; gap: 8px; margin-top: 8px;">
+                            <button class="mode-sub-chip active" data-cat="women" style="flex: 1; padding: 10px; border-radius: 12px; border: 1px solid #ddd; background: #fff; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s;">Women</button>
+                            <button class="mode-sub-chip" data-cat="men" style="flex: 1; padding: 10px; border-radius: 12px; border: 1px solid #ddd; background: #fff; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s;">Men</button>
+                            <button class="mode-sub-chip" data-cat="kids" style="flex: 1; padding: 10px; border-radius: 12px; border: 1px solid #ddd; background: #fff; font-size: 12px; font-weight: 600; cursor: pointer; transition: all 0.3s;">Kids</button>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
             <div class="anim-delay-3" style="width: 100%; opacity: 0; padding-bottom: 24px; margin-top: 40px;">
-                <button id="mode-continue-btn" class="primary-btn w-full" style="background: var(--nykaa-pink); border-radius: 16px; height: 56px; font-size: 16px; box-shadow: 0 8px 24px rgba(252,39,121,0.25);">Continue</button>
+                <button id="mode-continue-btn" class="primary-btn w-full"
+                    style="background: var(--nykaa-pink); border-radius: 16px; height: 56px; font-size: 16px; box-shadow: 0 8px 24px rgba(252,39,121,0.25);">Continue</button>
             </div>
         </main>
 
@@ -83,55 +116,79 @@
         <main id="avatar-setup-view" class="view hidden">
             <header class="view-header">
                 <button class="back-btn" data-target="mode-selection-view">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
                 </button>
                 <h2>Avatar Setup</h2>
                 <div style="width: 20px;"></div>
             </header>
             <div class="scrollable-content" style="padding: 24px;">
                 <h1 style="font-size: 24px; font-weight: 700; margin-bottom: 24px;">Who are you shopping for?</h1>
-                <div style="display: flex; gap: 12px; margin-bottom: 32px; background: #f0f0f0; padding: 4px; border-radius: 12px;">
-                    <button style="flex: 1; padding: 12px; background: #fff; border: none; border-radius: 8px; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">Myself</button>
-                    <button style="flex: 1; padding: 12px; background: transparent; border: none; border-radius: 8px; color: #666; font-weight: 500;">Someone else</button>
+                <div
+                    style="display: flex; gap: 12px; margin-bottom: 32px; background: #f0f0f0; padding: 4px; border-radius: 12px;">
+                    <button
+                        style="flex: 1; padding: 12px; background: #fff; border: none; border-radius: 8px; font-weight: 600; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">Myself</button>
+                    <button
+                        style="flex: 1; padding: 12px; background: transparent; border: none; border-radius: 8px; color: #666; font-weight: 500;">Someone
+                        else</button>
                 </div>
                 <!-- Body Type -->
                 <div style="margin-bottom: 24px;">
-                    <label style="display: block; font-size: 13px; font-weight: 600; color: #666; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Body Type</label>
+                    <label
+                        style="display: block; font-size: 13px; font-weight: 600; color: #666; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Body
+                        Type</label>
                     <div style="display: flex; gap: 12px;">
-                        <div style="flex: 1; text-align: center; border: 2px solid var(--nykaa-dark); border-radius: 12px; padding: 16px 8px; cursor: pointer;">
-                            <div style="height: 60px; background: #f0f0f0; border-radius: 8px; margin-bottom: 8px;"></div>
+                        <div
+                            style="flex: 1; text-align: center; border: 2px solid var(--nykaa-dark); border-radius: 12px; padding: 16px 8px; cursor: pointer;">
+                            <div style="height: 60px; background: #f0f0f0; border-radius: 8px; margin-bottom: 8px;">
+                            </div>
                             <span style="font-size: 12px; font-weight: 600;">Petite</span>
                         </div>
-                        <div style="flex: 1; text-align: center; border: 1px solid #eee; border-radius: 12px; padding: 16px 8px; cursor: pointer; opacity: 0.7;">
-                            <div style="height: 60px; background: #f0f0f0; border-radius: 8px; margin-bottom: 8px;"></div>
+                        <div
+                            style="flex: 1; text-align: center; border: 1px solid #eee; border-radius: 12px; padding: 16px 8px; cursor: pointer; opacity: 0.7;">
+                            <div style="height: 60px; background: #f0f0f0; border-radius: 8px; margin-bottom: 8px;">
+                            </div>
                             <span style="font-size: 12px; font-weight: 500;">Athletic</span>
                         </div>
-                        <div style="flex: 1; text-align: center; border: 1px solid #eee; border-radius: 12px; padding: 16px 8px; cursor: pointer; opacity: 0.7;">
-                            <div style="height: 60px; background: #f0f0f0; border-radius: 8px; margin-bottom: 8px;"></div>
+                        <div
+                            style="flex: 1; text-align: center; border: 1px solid #eee; border-radius: 12px; padding: 16px 8px; cursor: pointer; opacity: 0.7;">
+                            <div style="height: 60px; background: #f0f0f0; border-radius: 8px; margin-bottom: 8px;">
+                            </div>
                             <span style="font-size: 12px; font-weight: 500;">Curvy</span>
                         </div>
                     </div>
                 </div>
                 <!-- Skin Tone -->
                 <div style="margin-bottom: 24px;">
-                    <label style="display: block; font-size: 13px; font-weight: 600; color: #666; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Skin Tone</label>
+                    <label
+                        style="display: block; font-size: 13px; font-weight: 600; color: #666; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Skin
+                        Tone</label>
                     <div style="display: flex; gap: 12px;">
-                        <button style="width: 40px; height: 40px; border-radius: 50%; border: none; background: #fce0ce; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"></button>
-                        <button style="width: 40px; height: 40px; border-radius: 50%; border: 3px solid #fff; outline: 2px solid var(--nykaa-dark); background: #e8bfaa; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"></button>
-                        <button style="width: 40px; height: 40px; border-radius: 50%; border: none; background: #c18a6e; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"></button>
-                        <button style="width: 40px; height: 40px; border-radius: 50%; border: none; background: #8a563b; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"></button>
+                        <button
+                            style="width: 40px; height: 40px; border-radius: 50%; border: none; background: #fce0ce; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"></button>
+                        <button
+                            style="width: 40px; height: 40px; border-radius: 50%; border: 3px solid #fff; outline: 2px solid var(--nykaa-dark); background: #e8bfaa; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"></button>
+                        <button
+                            style="width: 40px; height: 40px; border-radius: 50%; border: none; background: #c18a6e; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"></button>
+                        <button
+                            style="width: 40px; height: 40px; border-radius: 50%; border: none; background: #8a563b; box-shadow: 0 2px 4px rgba(0,0,0,0.1);"></button>
                     </div>
                 </div>
                 <!-- Gender -->
                 <div style="margin-bottom: 24px;">
-                    <label style="display: block; font-size: 13px; font-weight: 600; color: #666; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Gender</label>
+                    <label
+                        style="display: block; font-size: 13px; font-weight: 600; color: #666; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Gender</label>
                     <div style="display: flex; gap: 10px;">
-                        <button class="chip" style="background: var(--nykaa-dark); color: #fff; border-color: var(--nykaa-dark);">Women</button>
+                        <button class="chip"
+                            style="background: var(--nykaa-dark); color: #fff; border-color: var(--nykaa-dark);">Women</button>
                         <button class="chip">Men</button>
                         <button class="chip">Fluid</button>
                     </div>
                 </div>
-                <div style="border: 1px dashed #ccc; border-radius: 12px; padding: 20px; text-align: center; background: #fafafa;">
+                <div
+                    style="border: 1px dashed #ccc; border-radius: 12px; padding: 20px; text-align: center; background: #fafafa;">
                     <div style="font-size: 24px; margin-bottom: 8px;">📷</div>
                     <div style="font-size: 13px; font-weight: 600; color: #444;">Upload Image (Optional)</div>
                 </div>
@@ -145,7 +202,10 @@
         <main id="preference-setup-view" class="view hidden">
             <header class="view-header">
                 <button class="back-btn" data-target="avatar-setup-view">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
                 </button>
                 <h2>Style Preferences</h2>
                 <div style="width: 20px;"></div>
@@ -154,75 +214,434 @@
                 <h1 style="font-size: 24px; font-weight: 700; margin-bottom: 24px;">Tell us your style</h1>
                 <!-- Vibe -->
                 <div style="margin-bottom: 32px;">
-                    <label style="display: block; font-size: 13px; font-weight: 600; color: #666; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Vibe (Multi-select)</label>
+                    <label
+                        style="display: block; font-size: 13px; font-weight: 600; color: #666; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Vibe
+                        (Multi-select)</label>
                     <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                        <button class="chip" style="background: var(--nykaa-dark); color: #fff; border-color: var(--nykaa-dark);">Casual</button>
+                        <button class="chip"
+                            style="background: var(--nykaa-dark); color: #fff; border-color: var(--nykaa-dark);">Casual</button>
                         <button class="chip">Formal</button>
-                        <button class="chip" style="background: var(--nykaa-dark); color: #fff; border-color: var(--nykaa-dark);">Streetwear</button>
+                        <button class="chip"
+                            style="background: var(--nykaa-dark); color: #fff; border-color: var(--nykaa-dark);">Streetwear</button>
                         <button class="chip">Ethnic</button>
                     </div>
                 </div>
                 <!-- Color -->
                 <div style="margin-bottom: 32px;">
-                    <label style="display: block; font-size: 13px; font-weight: 600; color: #666; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Color Preferences</label>
+                    <label
+                        style="display: block; font-size: 13px; font-weight: 600; color: #666; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Color
+                        Preferences</label>
                     <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-                        <button style="width: 36px; height: 36px; border-radius: 8px; border: 2px solid var(--nykaa-dark); background: #111; position: relative;">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <button
+                            style="width: 36px; height: 36px; border-radius: 8px; border: 2px solid var(--nykaa-dark); background: #111; position: relative;">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"
+                                style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
                         </button>
-                        <button style="width: 36px; height: 36px; border-radius: 8px; border: 1px solid #ddd; background: #fff; position: relative;"></button>
-                        <button style="width: 36px; height: 36px; border-radius: 8px; border: none; background: #fc2779; position: relative;"></button>
+                        <button
+                            style="width: 36px; height: 36px; border-radius: 8px; border: 1px solid #ddd; background: #fff; position: relative;"></button>
+                        <button
+                            style="width: 36px; height: 36px; border-radius: 8px; border: none; background: #fc2779; position: relative;"></button>
                     </div>
                 </div>
                 <!-- Budget -->
                 <div style="margin-bottom: 24px;">
-                    <label style="display: block; font-size: 13px; font-weight: 600; color: #666; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Budget Range</label>
+                    <label
+                        style="display: block; font-size: 13px; font-weight: 600; color: #666; margin-bottom: 12px; text-transform: uppercase; letter-spacing: 1px;">Budget
+                        Range</label>
                     <div style="display: flex; gap: 8px; justify-content: space-between;">
-                        <button style="flex: 1; padding: 12px; background: #fafafa; border: 1px solid #ddd; border-radius: 8px; font-weight: 600;">₹</button>
-                        <button style="flex: 1; padding: 12px; background: var(--nykaa-pink-light); border: 1px solid var(--nykaa-pink); border-radius: 8px; font-weight: 600; color: var(--nykaa-pink);">₹₹</button>
-                        <button style="flex: 1; padding: 12px; background: #fafafa; border: 1px solid #ddd; border-radius: 8px; font-weight: 600;">₹₹₹</button>
+                        <button
+                            style="flex: 1; padding: 12px; background: #fafafa; border: 1px solid #ddd; border-radius: 8px; font-weight: 600;">₹</button>
+                        <button
+                            style="flex: 1; padding: 12px; background: var(--nykaa-pink-light); border: 1px solid var(--nykaa-pink); border-radius: 8px; font-weight: 600; color: var(--nykaa-pink);">₹₹</button>
+                        <button
+                            style="flex: 1; padding: 12px; background: #fafafa; border: 1px solid #ddd; border-radius: 8px; font-weight: 600;">₹₹₹</button>
                     </div>
                 </div>
             </div>
             <div class="action-footer fixed">
-                <button id="pref-next-btn" class="primary-btn w-full">Save Preferences</button>
+        </main>
+
+        <!-- New Avatar Setup Screen -->
+        <main id="new-avatar-setup-view" class="view hidden">
+            <header class="view-header">
+                <button class="back-btn" data-target="mode-selection-view">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                </button>
+                <h2>Create your style profile</h2>
+                <div style="width: 20px;"></div>
+            </header>
+            
+            <div class="scrollable-content" style="padding: 24px;">
+                <div class="tabs-container" style="margin-bottom: 32px;">
+                    <div class="tab-options">
+                        <button class="tab-option active" id="tab-myself">Myself</button>
+                        <button class="tab-option" id="tab-someone">Someone Else</button>
+                    </div>
+                </div>
+
+                <div class="setup-section">
+                    <h3 class="section-title">Describe Yourself</h3>
+                    <div class="form-group">
+                        <label>Skin Tone</label>
+                        <select id="setup-skin-tone" class="custom-select">
+                            <option value="" disabled selected>Select Skin Tone</option>
+                            <option value="fair">Fair</option>
+                            <option value="medium">Medium</option>
+                            <option value="tan">Tan</option>
+                            <option value="deep">Deep</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Body Structure</label>
+                        <select id="setup-body-structure" class="custom-select">
+                            <option value="" disabled selected>Select Body Structure</option>
+                            <option value="petite">Petite</option>
+                            <option value="athletic">Athletic</option>
+                            <option value="curvy">Curvy</option>
+                            <option value="average">Average</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Hair Color</label>
+                        <select id="setup-hair-color" class="custom-select">
+                            <option value="" disabled selected>Select Hair Color</option>
+                            <option value="black">Black</option>
+                            <option value="brown">Brown</option>
+                            <option value="blonde">Blonde</option>
+                            <option value="auburn">Auburn</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Face Shape</label>
+                        <select id="setup-face-shape" class="custom-select">
+                            <option value="" disabled selected>Select Face Shape</option>
+                            <option value="oval">Oval</option>
+                            <option value="round">Round</option>
+                            <option value="square">Square</option>
+                            <option value="heart">Heart</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <select id="setup-gender" class="custom-select">
+                            <option value="" disabled selected>Select Gender</option>
+                            <option value="female">Women</option>
+                            <option value="male">Men</option>
+                            <option value="fluid">Fluid</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="separator-with-text"><span>OR</span></div>
+
+                <div class="setup-section">
+                    <h3 class="section-title">Upload Photo</h3>
+                    <div class="upload-area" id="avatar-upload-area">
+                        <input type="file" id="avatar-file-input" accept="image/png, image/jpeg" style="display: none;">
+                        <div class="upload-placeholder" id="upload-trigger">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                            <p>Upload Photo (PNG/JPG)</p>
+                        </div>
+                        <div class="upload-preview hidden" id="upload-preview-container">
+                            <img src="" alt="Preview" id="upload-preview-img">
+                            <button class="remove-upload-btn" id="remove-upload-btn">&times;</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Create Avatar Button moved here -->
+                <div style="margin-top: 40px; padding-bottom: 20px;">
+                    <button id="create-avatar-btn" class="primary-btn w-full" disabled style="opacity: 0.6; background: var(--nykaa-pink);">Create Avatar</button>
+                </div>
             </div>
         </main>
+
+        <!-- Avatar Preview Screen -->
+        <main id="avatar-preview-view" class="view hidden">
+            <header class="view-header">
+                <button class="back-btn" data-target="new-avatar-setup-view">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                </button>
+                <h2 id="avatar-view-title">Avatar Preview</h2>
+                <div style="width: 20px;"></div>
+            </header>
+
+            <div class="scrollable-content" style="padding: 32px 24px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+                <div class="generated-avatar-container">
+                    <div class="avatar-glow"></div>
+                    <img src="" alt="Generated Avatar" id="generated-avatar-img" class="generated-avatar" style="width: 240px; height: 320px; border-radius: 24px; object-fit: cover;">
+                </div>
+                
+                <div class="avatar-actions-group" id="preview-actions" style="width: 100%; margin-top: 40px; display: flex; flex-direction: column; gap: 12px;">
+                    <button class="secondary-btn w-full hidden" id="save-avatar-btn" style="border-color: var(--nykaa-dark); color: var(--nykaa-dark);">Save Profile</button>
+                    <button class="primary-btn w-full" id="continue-to-chat-btn" style="background: var(--nykaa-pink);">Chat with Jessica ✨</button>
+                </div>
+            </div>
+        </main>
+
+        <!-- Chatbot Screen -->
+        <main id="chat-view" class="view hidden" style="background: #fafafa; display: flex; flex-direction: column;">
+            <header class="view-header" style="box-shadow: 0 4px 15px rgba(0,0,0,0.05);">
+                <button class="back-btn" data-target="new-avatar-setup-view">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                </button>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div style="position: relative;">
+                        <div style="width: 36px; height: 36px; border-radius: 50%; background: linear-gradient(135deg, var(--nykaa-pink), #ff8a00); display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 700;">J</div>
+                        <div style="position: absolute; bottom: 0; right: 0; width: 10px; height: 10px; background: #10b981; border-radius: 50%; border: 2px solid white;"></div>
+                    </div>
+                    <div style="display: flex; flex-direction: column;">
+                        <span style="font-weight: 700; font-size: 15px; color: var(--nykaa-dark);">Jessica</span>
+                        <span style="font-size: 11px; color: #666; font-weight: 500;">AI Stylist ✨</span>
+                    </div>
+                </div>
+                <div style="width: 20px;"></div>
+            </header>
+            
+            <div class="chat-container" id="chat-messages" style="flex: 1; padding: 20px; display: flex; flex-direction: column; gap: 16px; overflow-y: auto; padding-bottom: 100px;">
+                <!-- Chat messages will be populated by JS -->
+            </div>
+            
+            <div class="chat-input-area" style="position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; max-width: 390px; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); border-top: 1px solid rgba(0,0,0,0.05); padding: 12px 20px 24px; display: flex; align-items: center; gap: 12px; z-index: 100; box-shadow: 0 -4px 20px rgba(0,0,0,0.05);">
+                <input type="text" id="chat-input" placeholder="Type your message..." autocomplete="off" style="flex: 1; padding: 14px 20px; border-radius: 30px; border: 1px solid #eee; outline: none; font-family: inherit; font-size: 14px; background: #f5f5f5; transition: border-color 0.3s;">
+                <button id="chat-send-btn" style="width: 48px; height: 48px; border-radius: 50%; background: var(--nykaa-pink); color: white; border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; flex-shrink: 0; box-shadow: 0 4px 12px rgba(252,39,121,0.3);">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left: -2px;"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                </button>
+            </div>
+        </main>
+
+        <!-- New AI Results Screen -->
+        <main id="new-ai-results-view" class="view hidden">
+            <header class="view-header">
+                <button class="back-btn" data-target="new-style-preferences-view">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                </button>
+                <h2>Curated Looks</h2>
+                <div style="width: 20px;"></div>
+            </header>
+            
+            <div class="scrollable-content" style="padding: 16px;">
+                <div id="ai-outfits-listing" class="ai-outfits-listing">
+                    <!-- JS populated -->
+                </div>
+            </div>
+        </main>
+
+
 
         <!-- New Screen 6: Zone Selection -->
         <main id="zone-selection-view" class="view hidden" style="padding: 24px; background: #fff;">
             <header class="view-header" style="padding: 0 0 16px 0; border: none; margin-bottom: 16px; position: static;">
-                <button class="back-btn" data-target="preference-setup-view" style="padding: 0;">
+                <button class="back-btn" data-target="avatar-preview-view" style="padding: 0;">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
                 </button>
             </header>
             <h1 style="font-size: 28px; font-weight: 700; margin-bottom: 32px; line-height: 1.2;">What do you need today?</h1>
             <div style="display: flex; flex-direction: column; gap: 16px;">
-                <div id="btn-zone1" style="border: 2px solid var(--nykaa-dark); border-radius: 16px; padding: 24px; cursor: pointer; background: #fff; box-shadow: 0 8px 20px rgba(0,0,0,0.05);">
+                <div id="btn-zone1-new" class="mode-card-v2 active enhanced-ai-card" style="padding: 24px; cursor: pointer; flex-direction: column; opacity: 1;">
+                    <div class="mode-badge-v2">✨ Popular</div>
                     <div style="font-size: 32px; margin-bottom: 12px;">👗</div>
-                    <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 8px;">Create Complete Look</h3>
-                    <p style="font-size: 13px; color: #666;">Get a full outfit styled for your occasion</p>
+                    <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">Create Complete Look</h3>
+                    <p style="font-size: 13px; color: #666; line-height: 1.4;">Get a full outfit styled for your occasion</p>
                 </div>
-                <div id="btn-zone2" style="border: 1px solid #ccc; border-radius: 16px; padding: 24px; cursor: pointer; background: #fafafa;">
+                <div id="btn-zone2-new" class="mode-card-v2" style="padding: 24px; cursor: pointer; flex-direction: column; opacity: 1;">
                     <div style="font-size: 32px; margin-bottom: 12px;">🧥</div>
-                    <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 8px;">Complete My Outfit</h3>
-                    <p style="font-size: 13px; color: #666;">Find items to match what you already own</p>
+                    <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 8px;">Complete My Outfit</h3>
+                    <p style="font-size: 13px; color: #666; line-height: 1.4;">Find items to match what you already own</p>
                 </div>
             </div>
         </main>
 
-        <!-- 7. Home Screen / Zone 1 Target -->
+        <!-- Shopping Flow Screens -->
+
+        <!-- SCREEN 1: Shopping Home -->
+        <main id="shop-home-view" class="view hidden">
+            <div class="shop-header-search">
+                <div class="search-bar">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#999" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <input type="text" placeholder="Search for styles, brands, outfits..." readonly>
+                </div>
+            </div>
+
+            <div class="category-tabs">
+                <button class="tab-btn active" data-category="women">Women</button>
+                <button class="tab-btn" data-category="men">Men</button>
+                <button class="tab-btn" data-category="kids">Kids</button>
+            </div>
+
+            <div class="scrollable-content" style="padding: 16px;">
+                <div class="product-grid" id="product-listing">
+                    <!-- JS populated -->
+                </div>
+            </div>
+        </main>
+
+        <!-- SCREEN 2: Product Details Page -->
+        <main id="product-detail-view" class="view hidden">
+            <header class="view-header">
+                <button class="back-btn" data-target="shop-home-view">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </button>
+                <h2 id="pd-title">Product Details</h2>
+                <div style="width: 20px;"></div>
+            </header>
+
+            <div class="scrollable-content">
+                <div class="pd-image-container">
+                    <img id="pd-image" src="" alt="Product">
+                </div>
+
+                <div class="pd-info">
+                    <h1 id="pd-name">Product Name</h1>
+                    <div class="pd-price-row">
+                        <span class="pd-price" id="pd-price">₹0</span>
+                        <span class="pd-discount-badge" id="pd-discount">-20% OFF</span>
+                    </div>
+
+                    <div class="pd-section">
+                        <label>Select Size</label>
+                        <div class="size-selector">
+                            <button class="size-btn">S</button>
+                            <button class="size-btn active">M</button>
+                            <button class="size-btn">L</button>
+                            <button class="size-btn">XL</button>
+                        </div>
+                    </div>
+
+                    <div class="pd-section">
+                        <label>Description</label>
+                        <p id="pd-description" class="pd-description">
+                            Experience ultimate comfort and style with this premium piece from Nykaa Fashion. Perfect
+                            for any occasion.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-footer fixed">
+                <button id="add-to-cart-btn" class="primary-btn w-full" style="background: var(--nykaa-pink);">Add to
+                    Cart</button>
+            </div>
+        </main>
+
+        <!-- SCREEN 3: Cart Page -->
+        <main id="cart-view" class="view hidden">
+            <header class="view-header">
+                <button class="back-btn" id="cart-back-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
+                </button>
+                <h2>Your Cart</h2>
+                <div style="width: 20px;"></div>
+            </header>
+
+            <div class="scrollable-content" style="padding: 16px;">
+                <div id="cart-items-list" class="cart-items-list">
+                    <!-- JS populated -->
+                </div>
+
+                <div class="cart-summary" id="cart-summary">
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="cart-subtotal">₹0</span>
+                    </div>
+                    <div class="summary-row promo">
+                        <span>Discount</span>
+                        <span id="cart-discount">-₹0</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Convenience Fee</span>
+                        <span id="cart-conv-fee">₹99</span>
+                    </div>
+                    <div class="summary-row total" style="border-bottom: 1px solid #eee; padding-bottom: 16px; margin-bottom: 24px;">
+                        <span>Total Amount</span>
+                        <span id="cart-total">₹0</span>
+                    </div>
+
+                    <div class="payment-section" style="margin-top: 16px; padding-bottom: 80px;">
+                        <h3 style="font-size: 14px; font-weight: 700; color: #111; margin-bottom: 16px; text-transform: uppercase; letter-spacing: 0.5px;">Select Payment Method</h3>
+                        <div style="display: flex; flex-direction: column; gap: 12px;">
+                            <label style="display: flex; align-items: center; justify-content: space-between; padding: 14px; border: 1.5px solid #eee; border-radius: 12px; cursor: pointer; transition: all 0.3s; background: #fff;" onclick="this.style.borderColor='var(--nykaa-pink)'">
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <div style="width: 24px; height: 24px; background: #fdf2f7; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--nykaa-pink)" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+                                    </div>
+                                    <span style="font-weight: 600; font-size: 14px;">Credit / Debit Card</span>
+                                </div>
+                                <input type="radio" name="payment" value="card" checked style="accent-color: var(--nykaa-pink); width: 18px; height: 18px;">
+                            </label>
+                            
+                            <label style="display: flex; align-items: center; justify-content: space-between; padding: 14px; border: 1.5px solid #eee; border-radius: 12px; cursor: pointer; transition: all 0.3s; background: #fff;" onclick="this.style.borderColor='var(--nykaa-pink)'">
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <div style="width: 24px; height: 24px; background: #fdf2f7; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--nykaa-pink)" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                                    </div>
+                                    <span style="font-weight: 600; font-size: 14px;">UPI (Google Pay / PhonePe)</span>
+                                </div>
+                                <input type="radio" name="payment" value="upi" style="accent-color: var(--nykaa-pink); width: 18px; height: 18px;">
+                            </label>
+                            
+                            <label style="display: flex; align-items: center; justify-content: space-between; padding: 14px; border: 1.5px solid #eee; border-radius: 12px; cursor: pointer; transition: all 0.3s; background: #fff;" onclick="this.style.borderColor='var(--nykaa-pink)'">
+                                <div style="display: flex; align-items: center; gap: 12px;">
+                                    <div style="width: 24px; height: 24px; background: #fdf2f7; border-radius: 6px; display: flex; align-items: center; justify-content: center;">
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--nykaa-pink)" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+                                    </div>
+                                    <span style="font-weight: 600; font-size: 14px;">Cash on Delivery</span>
+                                </div>
+                                <input type="radio" name="payment" value="cod" style="accent-color: var(--nykaa-pink); width: 18px; height: 18px;">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-footer fixed">
+                <button id="buy-now-btn" class="primary-btn w-full" style="background: var(--nykaa-pink);">Buy
+                    Now</button>
+            </div>
+        </main>
+
+        <!-- SCREEN 4: Order Success Page -->
+        <main id="success-view" class="view hidden"
+            style="background: #fff; align-items: center; justify-content: center; text-align: center;">
+            <div class="success-content">
+                <div class="success-icon">
+                    <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--nykaa-pink)"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                    </svg>
+                </div>
+                <h1 style="font-size: 24px; font-weight: 700; margin: 24px 0 8px;">Order placed successfully 🎉</h1>
+                <p style="color: #666; margin-bottom: 40px;">Your order will be delivered soon</p>
+                <button id="continue-shopping-btn" class="secondary-btn w-full" style="border-radius: 12px;">Continue Shopping</button>
+            </div>
+        </main>
+
+
+        <!-- ZONE 1: Full Look Generation Flow -->
         <main id="home-view" class="view hidden">
             <header class="view-header">
                 <button class="back-btn" data-target="zone-selection-view">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
                 </button>
-                <h2>Create Complete Look</h2>
+                <h2>Where are you going?</h2>
                 <div style="width: 20px;"></div>
             </header>
             <div class="hero">
-                <h1>What are you dressing for today?</h1>
+                <h1 style="font-size: 24px;">Describe your occasion...</h1>
                 <form id="nl-form" class="nl-input-container">
-                    <input type="text" id="nl-input" class="nl-input" placeholder="Type your occasion..." autocomplete="off" required>
+                    <input type="text" id="nl-input" class="nl-input" placeholder="Brunch in Goa, Meeting, Dinner..." autocomplete="off" required>
                     <button type="submit" class="nl-submit-btn" aria-label="Curate Outfit">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
                     </button>
@@ -232,8 +651,8 @@
                 <p class="suggestions-title">TRY THESE:</p>
                 <div class="suggestions-chips">
                     <button class="chip" data-query="Brunch in Goa">Brunch in Goa</button>
-                    <button class="chip" data-query="Client meeting look">Client meeting look</button>
-                    <button class="chip" data-query="Date night outfit">Date night outfit</button>
+                    <button class="chip" data-query="Office meeting">Office meeting</button>
+                    <button class="chip" data-query="Date night">Date night outfit</button>
                 </div>
             </div>
         </main>
@@ -250,17 +669,76 @@
             </div>
         </main>
 
+        <!-- ZONE 2: Wardrobe Completion Flow -->
+        <main id="wardrobe-input-view" class="view hidden">
+            <header class="view-header">
+                <button class="back-btn" data-target="zone-selection-view">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                </button>
+                <h2>What do you already have?</h2>
+                <div style="width: 20px;"></div>
+            </header>
+            <div class="scrollable-content" style="padding: 24px;">
+                <h3 class="section-title">Step 1: Upload Photo</h3>
+                <div class="upload-area" id="wardrobe-upload-area" style="margin-bottom: 32px;">
+                    <div class="upload-placeholder">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                        <p>Upload your item (PNG/JPG)</p>
+                    </div>
+                </div>
+
+                <h3 class="section-title">Step 2: Select Item Type</h3>
+                <div class="form-group">
+                    <select id="wardrobe-item-type" class="custom-select">
+                        <option value="top">White Shirt</option>
+                        <option value="bottom">Blue Jeans</option>
+                        <option value="outerwear">Black Blazer</option>
+                        <option value="dress">Floral Dress</option>
+                    </select>
+                </div>
+            </div>
+            <div class="action-footer fixed">
+                <button id="find-matches-btn" class="primary-btn w-full">Find Matches ✨</button>
+            </div>
+        </main>
+
+        <main id="wardrobe-results-view" class="view hidden">
+            <header class="view-header">
+                <button class="back-btn" data-target="wardrobe-input-view">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                </button>
+                <h2>Here's what goes with your item</h2>
+                <div style="width: 20px;"></div>
+            </header>
+            <div class="scrollable-content" style="padding: 16px;">
+                <div class="setup-section">
+                    <h3 class="section-title">Matching Bottoms</h3>
+                    <div id="matches-bottoms" class="product-grid" style="margin-bottom: 24px;"></div>
+                    
+                    <h3 class="section-title">Shoes</h3>
+                    <div id="matches-shoes" class="product-grid" style="margin-bottom: 24px;"></div>
+                    
+                    <h3 class="section-title">Accessories</h3>
+                    <div id="matches-accessories" class="product-grid"></div>
+                </div>
+            </div>
+        </main>
+
         <!-- 2. Results Screen -->
         <main id="results-view" class="view hidden">
             <header class="view-header">
                 <button class="back-btn" data-target="home-view">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
                 </button>
                 <h2>Top 3 Curated Looks</h2>
                 <div style="width: 20px;"></div> <!-- spacer -->
             </header>
             <div style="padding: 16px 20px 0;">
-                <p style="font-size: 14px; color: #666; text-align: center; font-weight: 400;">Selected based on your occasion and preferences</p>
+                <p style="font-size: 14px; color: #666; text-align: center; font-weight: 400;">Selected based on your
+                    occasion and preferences</p>
             </div>
             <div class="outfit-cards-container" id="results-container">
                 <!-- JS populated -->
@@ -271,7 +749,10 @@
         <main id="detail-view" class="view hidden">
             <header class="view-header">
                 <button class="back-btn" data-target="results-view">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
                 </button>
                 <h2>Outfit Breakdown</h2>
                 <div style="width: 20px;"></div>
@@ -285,7 +766,8 @@
                     <div style="display: flex; flex-direction: column; gap: 8px;">
                         <button id="try-on-btn" class="secondary-btn w-full">Try On Model</button>
                         <div style="display: flex; gap: 8px; align-items: stretch;">
-                            <button id="buy-look-btn" class="primary-btn flex-col" style="flex:1; border-radius:12px; font-size:13px; justify-content:center;">
+                            <button id="buy-look-btn" class="primary-btn flex-col"
+                                style="flex:1; border-radius:12px; font-size:13px; justify-content:center;">
                                 <span style="font-weight:700;">Buy Full Look</span>
                                 <div style="display:flex; align-items:center; justify-content:center;">
                                     <span class="original-price" id="detail-original-price">₹0</span>
@@ -308,7 +790,10 @@
         <main id="tryon-view" class="view hidden">
             <header class="view-header">
                 <button class="back-btn" data-target="detail-view">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
                 </button>
                 <h2>Virtual Try-On</h2>
                 <div style="width: 20px;"></div>
@@ -334,8 +819,15 @@
                 </div>
                 <!-- Trust Building Note -->
                 <div style="padding: 16px 20px; text-align: center;">
-                    <p style="font-size: 13px; color: #666; font-style: italic; background: rgba(0,0,0,0.03); padding: 10px; border-radius: 8px;">
-                        <svg style="vertical-align: middle; margin-right: 4px;" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    <p
+                        style="font-size: 13px; color: #666; font-style: italic; background: rgba(0,0,0,0.03); padding: 10px; border-radius: 8px;">
+                        <svg style="vertical-align: middle; margin-right: 4px;" width="14" height="14"
+                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
                         This is an AI-assisted visualization for styling reference
                     </p>
                 </div>
@@ -349,7 +841,10 @@
         <main id="checkout-view" class="view hidden">
             <header class="view-header">
                 <button class="back-btn" data-target="detail-view">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="19" y1="12" x2="5" y2="12"></line>
+                        <polyline points="12 19 5 12 12 5"></polyline>
+                    </svg>
                 </button>
                 <h2>Checkout</h2>
                 <div style="width: 20px;"></div>
@@ -366,7 +861,7 @@
                         <span id="checkout-total" class="nykaa-pink">₹0</span>
                     </div>
                 </div>
-                
+
                 <div class="checkout-container mt-16">
                     <h3>Delivery Detail</h3>
                     <p class="text-sm text-gray">Nykaa Express Delivery<br>Arrives in 1-2 days.</p>
@@ -391,10 +886,13 @@
 
         <!-- AI Learning Toast -->
         <div id="toast" class="toast hidden">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
             <span>We're learning your style preferences</span>
         </div>
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>
